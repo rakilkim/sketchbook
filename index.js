@@ -1,9 +1,7 @@
 let dimension = 16;
 let new_dimension = "";
 const BOARD_SIDE = 640;
-let r = 0;
-let g = 0;
-let b = 0;
+let rgb = "#000000";
 
 let container = document.querySelector('#container');
 
@@ -32,12 +30,12 @@ function reset() {
     grids.forEach((grid) => {
         grid.addEventListener('mousedown', (e) => {
             coloring = true;
-            grid.style.background = "rgb("+r+","+g+","+b+")";
+            grid.style.background = rgb;
             e.preventDefault();
         });
         grid.addEventListener('mousemove', () => {
             if (coloring) {
-                grid.style.background = "rgb("+r+","+g+","+b+")";
+                grid.style.background = rgb;
             }
         });
         grid.addEventListener('mouseup', () => {
@@ -49,18 +47,15 @@ function reset() {
 
 const dimensions = document.getElementById("dimensions");
 dimensions.addEventListener('keyup', function(e)  {
-    console.log(e)
     if (e.key === 'Enter') {
         e.preventDefault();
         document.getElementById("generate").click();
-    }
-    else if (isFinite(e.key)) {
-        new_dimension += e.key;
     }
 });
 
 const generate = document.getElementById("generate");
 generate.addEventListener('click', () => {
+    new_dimension = dimensions.value;
     if (parseInt(new_dimension) > 1 && parseInt(new_dimension) < 101) {
         document.getElementById('container').innerHTML = "";
         createBoard(new_dimension);
@@ -69,3 +64,12 @@ generate.addEventListener('click', () => {
     dimensions.value = "";
     new_dimension = "";
 });
+generate.addEventListener('mouseover', () => {
+    generate.style.cursor = "pointer";
+})
+
+const color = document.getElementById("color");
+color.addEventListener('input', () => {
+    console.log(color.value);
+    rgb = color.value;
+})
