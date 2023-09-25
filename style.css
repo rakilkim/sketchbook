@@ -37,12 +37,12 @@
     background-color: white;
     border: 2px solid black;
     transition-duration: 0.4s;
-    margin-right: 150px;
 }
-.button:hover {
+#generate:hover {
     background-color: black;
     color: white;
 }
+
 
 #dimensions {
     width: 110px;
@@ -51,11 +51,17 @@
 }
 
 #color {
-    margin-right: 120px;
+    margin-right: 70px;
+    border-radius: 5px;
 }
 
 h2 {
     display:flex;
     justify-content: center;
     margin:0;
+}
+
+#eraser {
+    margin-left:50px; 
+
 }

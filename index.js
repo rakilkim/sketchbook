@@ -3,8 +3,9 @@ let new_dimension = "";
 const BOARD_SIDE = 640;
 let rgb = "#000000";
 
-let container = document.querySelector('#container');
 
+//Creating board
+let container = document.querySelector('#container');
 function createBoard(dimension) {
     size = BOARD_SIDE/dimension
     dimension = parseInt(dimension);
@@ -22,8 +23,10 @@ function createBoard(dimension) {
     }
 }
 createBoard(dimension);
-reset();
 
+
+//Resetting event listener after generating new board
+reset();
 let coloring = false;
 function reset() {
     const grids = document.querySelectorAll(".grid");
@@ -43,6 +46,8 @@ function reset() {
         });
     });
 }
+
+//Prevents coloring when mouse not clicked
 window.addEventListener('mousemove', function(event){
     if (event.target.classList.value !== 'grid') {
         coloring = false;
@@ -50,6 +55,7 @@ window.addEventListener('mousemove', function(event){
 });
 
 
+//Generating new board
 const dimensions = document.getElementById("dimensions");
 dimensions.addEventListener('keyup', function(e)  {
     if (e.key === 'Enter') {
@@ -73,8 +79,40 @@ generate.addEventListener('mouseover', () => {
     generate.style.cursor = "pointer";
 })
 
+
+//Color
 const color = document.getElementById("color");
 color.addEventListener('input', () => {
-    console.log(color.value);
     rgb = color.value;
+    color.style.borderColor = color.value;
+    if (erasing) {
+        prevColor = rgb;
+        document.getElementById('eraser').click();
+    }
+})
+color.addEventListener('mouseover', () => {
+    color.style.cursor = "pointer";
+})
+
+
+//Eraser
+let erasing = false;
+let prevColor;
+const eraser = document.getElementById("eraser");
+eraser.addEventListener('click', () => {
+    if (erasing) {
+        eraser.style.backgroundColor = "white";
+        eraser.style.color = "black";
+        rgb = prevColor;
+        erasing = false;
+    }
+    else {
+        prevColor = rgb;
+        rgb = '#f8f8ff';
+        eraser.style.backgroundColor = "gray";
+        erasing = true;
+    }
+})
+eraser.addEventListener('mouseover', () => {
+    eraser.style.cursor = "pointer";
 })
