@@ -24,9 +24,9 @@ function createBoard(dimension) {
 createBoard(dimension);
 reset();
 
+let coloring = false;
 function reset() {
     const grids = document.querySelectorAll(".grid");
-    let coloring = false;
     grids.forEach((grid) => {
         grid.addEventListener('mousedown', (e) => {
             coloring = true;
@@ -43,6 +43,11 @@ function reset() {
         });
     });
 }
+window.addEventListener('mousemove', function(event){
+    if (event.target.classList.value !== 'grid') {
+        coloring = false;
+    }
+});
 
 
 const dimensions = document.getElementById("dimensions");

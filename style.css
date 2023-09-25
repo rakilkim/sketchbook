@@ -54,4 +54,8 @@
     margin-right: 120px;
 }
 
-
+h2 {
+    display:flex;
+    justify-content: center;
+    margin:0;
+}
