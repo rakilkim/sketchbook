@@ -7,13 +7,18 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <h2>Sketchpad</h2>
-    <div id="container"></div>
-    <div class="buttons">
-        <input id="color" type="color" name="color">
-        <input id="dimensions" type="number" name="dimensions" placeholder="Pick from 2-100" min="2" max="100">
-        <button id="generate" class="button">Generate New Board</button>
-        <button id="eraser" class="button">Eraser</button>
-    </div>
+    <div id="all">
+        <div id="outer-container">
+            <h2>Sketchpad</h2>
+            <div id="container"></div>
+            <div class="buttons">
+                <input id="color" type="color" name="color">
+                <input id="dimensions" type="number" name="dimensions" placeholder="Pick from 2-100" min="2" max="100">
+                <button id="generate" class="button">Generate New Board</button>
+                <button id="eraser" class="button">Eraser</button>
+            </div>
+        </div>
+        <button id="clear" class="button">Clear</button>
+    </div>  
 </body>
 </html>

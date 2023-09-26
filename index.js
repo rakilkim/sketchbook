@@ -116,3 +116,13 @@ eraser.addEventListener('click', () => {
 eraser.addEventListener('mouseover', () => {
     eraser.style.cursor = "pointer";
 })
+
+
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+    console.log(clear);
+    let grids = document.querySelectorAll('.grid');
+    grids.forEach((grid) => {
+        grid.style.backgroundColor = 'ghostwhite'
+    });
+})
